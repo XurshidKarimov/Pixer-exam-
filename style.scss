@@ -1,0 +1,552 @@
+@import "nullstyle.scss";
+
+@font-face {
+    font-family: 'Jakarta Regular';
+    src: url(./fonts/PlusJakartaSans-Regular.woff2);
+}
+
+@font-face {
+    font-family: 'Jakarta Medium';
+    src: url(./fonts/PlusJakartaSans-Medium.woff2);
+}
+
+@font-face {
+    font-family: 'Jakarta SemiBold';
+    src: url(./fonts/PlusJakartaSans-SemiBold.woff2);
+}
+
+@font-face {
+    font-family: 'Jakarta Bold';
+    src: url(./fonts/PlusJakartaSans-Bold.woff2);
+}
+
+
+@mixin typeF($typeF) {
+    @if $typeF==jr {
+        font-family: 'Jakarta Regular', sans-serif;
+    }
+
+    @else if $typeF==jm {
+        font-family: 'Jakarta Medium', sans-serif;
+    }
+
+    @else if $typeF==jsb {
+        font-family: 'Jakarta SemiBold', sans-serif;
+    }
+
+    @else if $typeF==jb {
+        font-family: 'Jakarta Bold', sans-serif;
+    }
+}
+
+.container {
+    max-width: 1256px;
+    padding: 0 20px;
+    margin: auto;
+}
+
+// !! COLORS START
+$btn__bg-color: #1AAB7B;
+$btn__color: #FFFFFF;
+$btn__hover__bg-color: #FFFFFF;
+$btn__hover__color: #1AAB7B;
+$title-h2-color: #101010;
+$subtitle-h3-color: #636F87;
+$nav-menu-link-color: #101010;
+$nav-menu-link-hover-color: #1AAB7B;
+$nav-menu-link-active-color: #ADE1D0;
+$help-content-card__bg-color: transparent;
+$help-content-card__title-color: #101010;
+$help-content-card__iconbox-bg-color: #E1E7ED;
+$help-content-card__iconbox-hover-bg-color: #FFFFFF;
+$help-content-card__icon-color: #1AAB7B;
+$help-content-card__icon-hover-color: inherit;
+$help-content-card__subtitle-color: #636F87;
+$help-content-card__hover__bg-color: #1AAB7B;
+$help-content-card__hover__font-color: #FFFFFF;
+$help-content-card__link-color: #101010;
+$help-content-card__hover__link-color: #FFFFFF;
+$work-content-card__title-color: #101010;
+$work-content-card__subtitle-color: #636F87;
+$footer-list_first-child-color: #FFFFFF;
+$footer-list_link-color: #A1A8B7;
+$footer-list_link-hover-color: #1AAB7B;
+$footer-copyright-color: #FFFFFF;
+// !! COLORS END
+
+
+// !! COMPONENTS
+.btn {
+    padding: 20px 40px;
+    border: 1px solid $btn__bg-color;
+    border-radius: 6px;
+    @include font(16, 700, 19.2, none, $btn__color);
+    @include typeF(jb);
+    background: $btn__bg-color;
+    transition: linear .2s;
+
+    &:hover {
+        color: $btn__hover__color;
+        background-color: $btn__hover__bg-color;
+    }
+
+    &:active {
+        opacity: .7;
+    }
+}
+
+.section-titles {
+    @include flex(center, $fDirection: column, $cGap: 16);
+
+    &__title {
+        @include font(36, 600, 50, none, $title-h2-color);
+        @include typeF(jb);
+        max-width: 410px;
+        text-align: center;
+    }
+
+    &__subtitle {
+        @include font(18, 400, 27, none, $subtitle-h3-color);
+        @include typeF(jr);
+        max-width: 650px;
+        text-align: center;
+    }
+}
+
+.padding-right {
+    padding-right: 216px;
+}
+
+.padding-left {
+    padding-left: 104px;
+}
+
+// !! COMPONENTS END
+
+
+// !! MAIN STYLES START
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 55555;
+    background-color: white;
+    border-bottom: 1px solid #EEEEF4;
+
+    & .header-content {
+        padding: 24px 0;
+        @include flex(center, space-between);
+
+        &__leftside {
+            @include flex(center, $cGap: 50);
+
+            &__logo-link {
+                transition: linear .2s;
+
+                &:hover {
+                    opacity: .8;
+                }
+
+                &:active {
+                    opacity: .6;
+                }
+            }
+
+            &__navbar {
+                &__list {
+                    @include flex($cGap: 30);
+
+                    &__item {
+                        &__link {
+                            @include font(16, 500, 24, none, $nav-menu-link-color);
+                            @include typeF(jm);
+                            transition: linear .2s;
+
+                            &:hover {
+                                color: $nav-menu-link-hover-color;
+                            }
+
+                            &:active {
+                                color: $nav-menu-link-active-color;
+                            }
+                        }
+                    }
+                }
+
+            }
+
+        }
+
+        &__phonenumber {
+            padding: 12px 24px;
+            border: 1px solid #101010;
+            border-radius: 6px;
+            background-color: #101010;
+            transition: linear .2s;
+            @include font(14, 700, 16, none, #FFFFFF);
+            @include typeF(jb);
+
+            &:hover {
+                color: #1AAB7B;
+                background-color: #FFFFFF;
+                border-color: currentColor;
+            }
+
+            &:active {
+                color: #FFFFFF;
+                background-color: #A9A9A9;
+            }
+        }
+    }
+}
+
+main {
+    .heading-content {
+        padding-top: 180px;
+        padding-bottom: 155px;
+        display: flex;
+
+        &__start {
+            &__content {
+                & .heading-title {
+                    @include font(56, 700, 78, none, #101010);
+                    @include typeF(jb);
+                    margin-bottom: 20px;
+
+                    & span {
+                        display: block;
+                    }
+                }
+
+                & .heading-subtitle {
+                    @include font(18, 400, 27, none, #636F87);
+                    @include typeF(jr);
+                    max-width: 535px;
+                    margin-bottom: 40px;
+                }
+            }
+        }
+
+        &__end {
+            &__videobox {
+                width: 592px;
+                height: 334px;
+
+                & iframe {
+                    width: 100%;
+                    height: 100%;
+                    border-radius: 6px;
+                }
+            }
+        }
+    }
+
+    .help {
+        background-color: #F2F4F6;
+
+        &-content {
+            padding-top: 50px;
+            padding-bottom: 50px;
+
+            &__cardblock {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(384px, 1fr));
+                grid-template-rows: repeat(2, minmax(384px, 1fr));
+                grid-auto-flow: row;
+                gap: 32px;
+
+                margin-top: 40px;
+
+                &__card {
+                    @include flex($fDirection: column);
+                    padding: 30px 30px 40px 30px;
+                    background-color: $help-content-card__bg-color;
+                    border: 2px solid #E1E7ED;
+                    border-radius: 6px;
+                    transition: linear .2s;
+                    cursor: pointer;
+
+                    &__top {
+                        @include flex(center, space-between);
+                        margin-bottom: 11px;
+
+                        &__title {
+                            @include font(32, 600, 44, none, $help-content-card__title-color);
+                            @include typeF(jsb);
+                        }
+
+                        &__iconbox {
+                            width: 64px;
+                            height: 64px;
+                            border-radius: 50%;
+                            background-color: $help-content-card__iconbox-bg-color;
+                            @include flex(center, center);
+
+                            & svg path {
+                                fill: $help-content-card__icon-color;
+                            }
+                        }
+                    }
+
+                    &__desc {
+                        @include font(18, 400, 27, none, $help-content-card__subtitle-color);
+                        @include typeF(jr);
+                        flex-grow: 1;
+                    }
+
+                    &__link {
+                        @include font(20, 700, 28, none, $help-content-card__link-color);
+                        @include typeF(jb);
+                        margin-top: 10px;
+                        justify-self: flex-end;
+                        align-self: baseline;
+                        position: relative;
+                        padding-bottom: 1px;
+
+                        &:before {
+                            content: '';
+                            position: absolute;
+                            bottom: 0;
+                            width: 0px;
+                            height: 2px;
+                            background-color: #FFFFFF;
+                            transition: linear .4s;
+                        }
+                    }
+
+                    &:hover {
+                        background-color: $help-content-card__hover__bg-color;
+                        border: none;
+
+                        & *:not([class$="iconbox"]) {
+                            color: $help-content-card__hover__font-color;
+                        }
+
+                        & div:where([class$="iconbox"]) {
+                            background-color: $help-content-card__iconbox-hover-bg-color;
+                        }
+
+                        & a[class$="__link"]:before {
+                            width: 100%;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .work {
+        &-content {
+            padding-top: 100px;
+
+            &__cardsblock {
+                @include flex($fDirection: column, $rGap: 100);
+                margin-top: 90px;
+
+                &__card {
+                    @include flex($cGap: 32);
+
+                    &__imgbox {
+                        min-width: 488px;
+                        height: 390px;
+                        border-radius: 6px;
+                        overflow: hidden;
+
+                        & img {
+                            width: 100%;
+                            height: 100%;
+                        }
+                    }
+
+                    &-content {
+                        padding-top: 30px;
+
+                        &__title {
+                            @include font(40, 700, 56, none, $work-content-card__title-color);
+                            @include typeF(jb);
+                            margin-bottom: 20px;
+
+                            & span {
+                                display: block;
+                            }
+                        }
+
+                        &__subtitle {
+                            @include font(18, 400, 27, none, $work-content-card__subtitle-color);
+                            @include typeF(jr);
+                        }
+                    }
+
+                    &.padding-right {
+                        & div:where([class$="__imgbox"]) {
+                            order: 1;
+                        }
+
+                        & div:where([class$="-content"]) {
+                            order: 2;
+                        }
+                    }
+
+                    &.padding-left {
+                        & div:where([class$="__imgbox"]) {
+                            order: 2;
+                        }
+
+                        & div:where([class$="-content"]) {
+                            order: 1;
+                        }
+                    }
+                }
+
+
+
+            }
+        }
+    }
+
+    .callback {
+        margin-bottom: 200px;
+
+        &-content {
+            padding-top: 150px;
+
+            &__block {
+                margin-top: 60px;
+                padding: 0 104px;
+
+                & form {
+                    padding: 64px 312px;
+                    @include flex(center, $fDirection: column);
+                    background-color: #F2F4F6;
+                    border-radius: 6px;
+
+                    & input {
+                        width: 100%;
+                        padding-bottom: 21px;
+                        background-color: transparent;
+                        @include font(20, 500, 25, capitalize, #101010);
+                        @include typeF(jm);
+                        border-bottom: 1px solid #D5D9E0;
+
+                        &::placeholder {
+                            @include font(20, 700, 25, none, #101010);
+                            @include typeF(jb);
+                        }
+
+                        &:where(:nth-child(1), :nth-child(2)) {
+                            margin-bottom: 51px;
+                        }
+                    }
+
+                    & select {
+                        width: 100%;
+                        padding-bottom: 21px;
+                        background-color: transparent;
+                        @include font(20, 700, 25, none, #101010);
+                        @include typeF(jb);
+                        border-bottom: 1px solid #D5D9E0;
+                        appearance: none;
+                        background: url(./assets/icons/arrow.svg) right 5px no-repeat;
+                        margin-bottom: 40px;
+                    }
+
+                    & .form-btn {
+                        margin-bottom: 24px;
+                        padding: 20px 70px;
+                    }
+                }
+
+                &__text {
+                    @include font(16, 400, 24, none, #858EA1);
+                    @include typeF(jr);
+                    text-align: center;
+                }
+            }
+        }
+    }
+
+
+}
+
+footer {
+    background-color: #101010;
+
+    & .footer-content {
+        padding-top: 100px;
+        padding-bottom: 100px;
+
+        &__top {
+            @include flex($jContent: space-between);
+
+            &__leftside {
+                @include flex($cGap: 151);
+            }
+
+            & ul:not([class*="social"]) {
+                @include flex($fDirection: column);
+
+                & li:where(:first-child) {
+                    @include font(20, 700, 25, none, $footer-list_first-child-color);
+                    @include typeF(jb);
+                    font-style: normal;
+                    margin-bottom: 30px;
+                }
+
+                & li:not(:first-child, :last-child) {
+                    margin-bottom: 26px;
+                }
+            }
+
+            & li a,
+            li.street-address {
+                @include font(18, 500, 27, none, $footer-list_link-color);
+                @include typeF(jm);
+                font-style: normal;
+
+                &:not([class*="address"]) {
+                    transition: linear .2s;
+
+                    &:hover {
+                        color: $footer-list_link-hover-color;
+                    }
+
+                    &:active {
+                        opacity: .8;
+                    }
+                }
+            }
+
+            li.street-address span {
+                display: block;
+            }
+
+            &__address-side__social-list {
+                margin-top: 32px;
+                @include flex($cGap: 40);
+
+                & li {
+                    align-self: baseline;
+                }
+            }
+        }
+    }
+
+    & .line {
+        width: 100%;
+        height: 1px;
+        background-color: #3B4155;
+    }
+
+    & .footer-content__bottom {
+        padding-top: 50px;
+        padding-bottom: 50px;
+        @include flex(center, space-between);
+
+        &-copy {
+            @include font(18, 500, 27, none, $footer-copyright-color);
+            @include typeF(jm);
+        }
+    }
+}
+
+// !! MAIN STYLES END
