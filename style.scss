@@ -121,6 +121,16 @@ $footer-copyright-color: #FFFFFF;
     padding-left: 104px;
 }
 
+.logo-hover {
+    &:hover {
+        opacity: .8;
+    }
+
+    &:active {
+        opacity: .6;
+    }
+}
+
 // !! COMPONENTS END
 
 
@@ -142,14 +152,6 @@ header {
 
             &__logo-link {
                 transition: linear .2s;
-
-                &:hover {
-                    opacity: .8;
-                }
-
-                &:active {
-                    opacity: .6;
-                }
             }
 
             &__navbar {
